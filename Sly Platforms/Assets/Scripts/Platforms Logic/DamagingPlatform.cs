@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// Damaging platform type behavior implementation
 /// </summary>
-public class DamagingPlatform : TrapPlatform
+public class DamagingPlatform : MonoBehaviour
 {
     [SerializeField] private MeshRenderer meshRenderer;
 
@@ -14,9 +14,11 @@ public class DamagingPlatform : TrapPlatform
 
     [SerializeField] private float damage;
 
-    public override void ActivateTrap()
+    private bool mechanismIsRunning = false;
+
+    private void OnTriggerStay(Collider other)
     {
-        if (!mechanismIsRunning)
+        if (other.gameObject.tag == "Player" && !mechanismIsRunning)
         {
             mechanismIsRunning = true;
             StartCoroutine(PerformTrapTripping());
@@ -42,7 +44,11 @@ public class DamagingPlatform : TrapPlatform
             Quaternion.identity);
         foreach (var collider in overlappedColliders)
         {
-            collider.GetComponent<EntityComponent>()?.DealDamage(damage);
+            var entityComponent = collider.GetComponent<EntityComponent>();
+            if (entityComponent != null)
+            {
+                entityComponent.DealDamage(damage);
+            }
         }
     }
 }

@@ -28,15 +28,6 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        var trapComponent = hit.gameObject.GetComponent<TrapPlatform>();
-        if (trapComponent)
-        {
-            trapComponent.ActivateTrap();
-        }
-    }
-
     private void Update()
     {
         CheckMoveAndJump();
