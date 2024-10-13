@@ -34,7 +34,6 @@ public class PoisonousPlatform : MonoBehaviour
         while (true)
         {
             player.DealDamage(damagePerSecond * Time.deltaTime);
-            Debug.Log(player.HealthPoints);
             yield return null;
         }
     }
