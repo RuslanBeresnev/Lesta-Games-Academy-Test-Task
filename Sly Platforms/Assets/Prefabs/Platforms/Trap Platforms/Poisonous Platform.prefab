@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8083049248227103595
+--- !u!1 &2221798384572018745
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3642457243833959270}
-  - component: {fileID: 3111503787530825968}
-  - component: {fileID: 7888889141671434494}
+  - component: {fileID: 1770877693914452334}
+  - component: {fileID: 7609751933958876720}
+  - component: {fileID: 5848809871634936382}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3642457243833959270
+--- !u!4 &1770877693914452334
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8083049248227103595}
+  m_GameObject: {fileID: 2221798384572018745}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,13 +33,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5508432720120616722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3111503787530825968
+--- !u!65 &7609751933958876720
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8083049248227103595}
+  m_GameObject: {fileID: 2221798384572018745}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -52,21 +52,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 0.5, z: 3}
-  m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &7888889141671434494
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 1.75, z: 0}
+--- !u!114 &5848809871634936382
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8083049248227103595}
+  m_GameObject: {fileID: 2221798384572018745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df0a0ba1b6a7128478c9b3bea1bbc4d4, type: 3}
+  m_Script: {fileID: 11500000, guid: e17a1e7763feb1c4fa472effd5019c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windStrength: 2
+  damagePerSecond: 20
 --- !u!1 &8300418860779109123
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 5508432720120616722}
   - component: {fileID: 885069777688620643}
   m_Layer: 0
-  m_Name: Wind Zone Platform
+  m_Name: Poisonous Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4831417846426336157}
-  - {fileID: 3642457243833959270}
+  - {fileID: 1770877693914452334}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &885069777688620643
@@ -183,7 +183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d7af931696ba2384285a6c2eb1dcc3c7, type: 2}
+  - {fileID: 2100000, guid: e5d7a75887c55c34dacda750b78457a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
