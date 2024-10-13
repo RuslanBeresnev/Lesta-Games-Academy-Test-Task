@@ -20,7 +20,6 @@ public class WindZonePlatform : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<CharacterController>().Move(windDirection * Time.deltaTime);
-            Debug.Log(windDirection);
         }
     }
 

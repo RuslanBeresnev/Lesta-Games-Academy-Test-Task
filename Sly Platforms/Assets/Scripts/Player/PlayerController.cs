@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// Implementation of player movement, jumping, running and camera rotation
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
     private bool canMove = true;
+
+    private float verticalVelocity = 0f;
 
     void Awake()
     {
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             moveDirection.y = movementDirectionY;
         }
+        moveDirection.y += verticalVelocity;
 
         if (!characterController.isGrounded)
         {
@@ -71,5 +75,19 @@ public class PlayerController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+    }
+
+    public void ApplyImpulseForceToPlayer(Vector3 direction, float force)
+    {
+        direction = direction.normalized;
+
+    }
+
+    public IEnumerator ThrowUpPlayer(float verticalVelocity)
+    {
+        moveDirection.y = 0f;
+        this.verticalVelocity = verticalVelocity;
+        yield return null;
+        this.verticalVelocity = 0f;
     }
 }
