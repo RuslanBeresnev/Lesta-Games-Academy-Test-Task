@@ -25,6 +25,12 @@ public class PlayerController : MonoBehaviour
     private float rotationX = 0;
     private float verticalVelocity = 0f;
 
+    public bool CanMove
+    {
+        get => canMove;
+        set => canMove = value;
+    }
+
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -45,12 +51,12 @@ public class PlayerController : MonoBehaviour
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float currentSpeedX = canMove ? (isRunning && canRun ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-        float currentSpeedY = canMove ? (isRunning && canRun ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
+        float currentSpeedX = (isRunning && canRun ? runSpeed : walkSpeed) * Input.GetAxis("Vertical");
+        float currentSpeedY = (isRunning && canRun ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal");
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * currentSpeedX) + (right * currentSpeedY);
 
-        if (Input.GetKey(KeyCode.Space) && canMove && canJump && characterController.isGrounded)
+        if (Input.GetKey(KeyCode.Space) && canJump && characterController.isGrounded)
         {
             moveDirection.y = jumpPower;
         }
@@ -65,7 +71,7 @@ public class PlayerController : MonoBehaviour
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-        characterController.Move(moveDirection * Time.deltaTime);
+        characterController.Move(canMove ? moveDirection * Time.deltaTime : Vector3.zero);
     }
 
     private void RotateCamera()

@@ -8,6 +8,7 @@ public class EntityComponent : MonoBehaviour
 {
     [SerializeField] private float maxHealthPoints = 100f;
     [SerializeField] UnityEvent<float, float> hpChanged;
+    [SerializeField] private Canvas lossCanvas;
 
     private float healthPoints;
 
@@ -48,6 +49,6 @@ public class EntityComponent : MonoBehaviour
 
     public void KillEntity()
     {
-        // «агрузка сцены с меню поражени€ или блокировка игры и высвечивание текста
+        lossCanvas.gameObject.SetActive(true);
     }
 }
