@@ -20,6 +20,8 @@ public class LossCanvasController : MonoBehaviour
     public void OnRetryButtonPressed()
     {
         SceneManager.LoadScene("Game");
+        Timer.GameWasStarted = false;
+        Timer.GameStartTime = 0f;
     }
 
     public void OnQuitButtonPressed()
