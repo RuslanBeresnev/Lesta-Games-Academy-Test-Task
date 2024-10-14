@@ -6557,6 +6557,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6043316044963767034, guid: 8a2928e23b57355419bf29fa86e2dfcb, type: 3}
+      propertyPath: canRun
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043316044963767034, guid: 8a2928e23b57355419bf29fa86e2dfcb, type: 3}
+      propertyPath: canJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043316044963767034, guid: 8a2928e23b57355419bf29fa86e2dfcb, type: 3}
       propertyPath: walkSpeed
       value: 3.5
       objectReference: {fileID: 0}

@@ -14,13 +14,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float lookSpeed = 2.5f;
     [SerializeField] private float lookXLimit = 60f;
 
+    [SerializeField] private bool canMove = true;
+    [SerializeField] private bool canJump = true;
+    [SerializeField] private bool canRun = true;
+
     private Camera playerCamera;
     private CharacterController characterController;
 
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
-    private bool canMove = true;
-
     private float verticalVelocity = 0f;
 
     void Awake()
@@ -43,12 +45,12 @@ public class PlayerController : MonoBehaviour
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float currentSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-        float currentSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
+        float currentSpeedX = canMove ? (isRunning && canRun ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
+        float currentSpeedY = canMove ? (isRunning && canRun ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * currentSpeedX) + (right * currentSpeedY);
 
-        if (Input.GetKey(KeyCode.Space) && canMove && characterController.isGrounded)
+        if (Input.GetKey(KeyCode.Space) && canMove && canJump && characterController.isGrounded)
         {
             moveDirection.y = jumpPower;
         }
